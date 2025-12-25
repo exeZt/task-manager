@@ -5,6 +5,7 @@ from typing import Any, List, Dict
 import json
 
 class DataHandler:
+	# Метод осуществляющий подключение к базе данных
 	@contextmanager
 	def connect(self):
 		conn = sqlite3.connect("./database.db")
@@ -23,6 +24,7 @@ class DataHandler:
 		finally:
 			conn.close()
 
+ 	# Метод отправляющий запрос в базу данных 
 	def execute(self, query: str, params: tuple = []) -> str:
 		with self.connect() as conn:
 			cursor = conn.cursor()
@@ -31,18 +33,15 @@ class DataHandler:
 					cursor.execute(query, params)
 				else:
 					cursor.execute(query)
-
 				# Non-SELECT запросы
 				if cursor.description is None:
-						conn.commit()
-						return json.dumps({"rows_affected": cursor.rowcount})
-
+					conn.commit()
+					return json.dumps({"rows_affected": cursor.rowcount})
 				# SELECT запросы
 				columns = [col[0] for col in cursor.description]
 				rows: List[Dict[str, Any]] = [
-						dict(zip(columns, row)) for row in cursor.fetchall()
+					dict(zip(columns, row)) for row in cursor.fetchall()
 				]
 				return json.dumps(rows)
-
 			finally:
-					cursor.close()
+				cursor.close()

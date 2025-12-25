@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 ]
 
-ROOT_URLCONF = 'task_planner.urls'
+ROOT_URLCONF = 'task-manager.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'task_planner.wsgi.application'
+WSGI_APPLICATION = 'task-manager.wsgi.application'
 
 
 # Database

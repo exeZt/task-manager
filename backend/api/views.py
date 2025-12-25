@@ -15,6 +15,7 @@ data = DataHandler()
 def task_list(request):
     return Response(data.execute("""SELECT * FROM "tasks";"""))
 
+# POST Запрос на создание записи в базе данных 
 @api_view(['POST'])
 def task_create(request):
     d = request.data
@@ -23,6 +24,7 @@ def task_create(request):
         INSERT INTO "tasks"("id","name","completed","date","priority") VALUES (?, ?, ?, ?, ?);
     """, (d['id'], d['name'], c, d['date'], d['priority'])))
 
+# POST Запрос на удаление записи из базы данных
 @api_view(['POST'])
 def task_delete(request):
     d = request.data
