@@ -27,7 +27,7 @@ def task_create(request):
 # POST Запрос на удаление записи из базы данных
 @api_view(['POST'])
 def task_delete(request):
-    d = request.data
+    d = request.datadsa
     return Response(data.execute("""
         DELETE FROM "tasks" WHERE "id"=(?);
     """, (d['id'],)))

@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Manager</title>
+  <link rel="manifest" href="app.manifest.json"/> 
 </head>
 <body>
   <div class="app-container" id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    navigator.serviceWorker
+    .register("sw.js")
+    .then((serviceWorkerRegistration) => {
+      serviceWorkerRegistration.pushManager.subscribe().then(
+        (pushSubscription) => {
+          console.log(pushSubscription.endpoint);
+        },
+        (error) => {
+          console.error(error);
+        },
+      );
+    });
+  </script>
 </body>
 </html>

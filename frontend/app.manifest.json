@@ -1,0 +1,46 @@
+{
+  "short_name": "TaskManager",
+  "name": "TaskManager",
+	"version": "1.0.0",
+	"display" : "standalone",
+
+  "icons": [
+    {
+      "src": "public/ico_32.svg",
+      "sizes": "128x128",
+      "type": "image/svg"
+    },
+    {
+      "src": "public/ico_32.svg",
+      "sizes": "64x64",
+      "type": "image/svg"
+    },
+    {
+      "src": "public/ico_32.svg",
+			"sizes": "32x32",
+			"type": "image/svg"
+    }
+  ],
+	"shortcuts": [
+    {
+      "name": "TaskManager",
+      "url": "/",
+      "icons": [
+        {
+          "src": "public/ico_64.svg",
+          "sizes": "64x64",
+          "type": "image/svg"
+        }
+      ]
+		}
+	],
+	"url_handlers": [
+    {
+      "origin": "http://127.0.0.1:5173/"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "white",
+  "background_color": "white"
+}
